@@ -42,7 +42,7 @@ class CategoryScreen extends StatelessWidget {
                 delegate: SliverChildBuilderDelegate((context, index) {
                   return CategeoryGridProdList(
                     // onTap: () => navigationPush(context, ProductShowScreen()),
-                    imageUrl: 'assets/images/apple.png',
+                    imageUrl: 'assets/images/Copperware-Gift-items.png',
                     title: 'Categoryname',
                     onTap: () => navigationPush(context, SubCategoryScreen()),
                   );

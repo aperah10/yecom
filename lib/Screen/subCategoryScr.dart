@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shop/Elements/baseAppbar.dart';
 import 'package:shop/Elements/formfield.dart';
+import 'package:shop/Screen/ProdList.dart';
+import 'package:shop/utils/common.dart';
 import 'CategoryScr.dart';
 
 class SubCategoryScreen extends StatelessWidget {
@@ -43,8 +45,9 @@ class SubCategoryScreen extends StatelessWidget {
                 delegate: SliverChildBuilderDelegate((context, index) {
                   return CategeoryGridProdList(
                     // onTap: () => navigationPush(context, ProductShowScreen()),
-                    imageUrl: 'assets/images/watermelon.png',
+                    imageUrl: 'assets/images/indianGod.png',
                     title: 'SubCategory List',
+                    onTap: () => navigationPush(context, ProductListScreen()),
                   );
                 }, childCount: 5)),
           ),

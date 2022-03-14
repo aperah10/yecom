@@ -50,7 +50,7 @@ class Btn extends StatelessWidget {
   final TextStyle? style;
   final double? width;
   final double? height;
-  final Color? color;
+  final Color? color, txtColor;
 
   final EdgeInsets? padding, margin;
   final Alignment? alignment;
@@ -59,6 +59,7 @@ class Btn extends StatelessWidget {
       this.alignment,
       this.btnName,
       this.color,
+      this.txtColor,
       this.width,
       this.height,
       this.onTap,
@@ -88,8 +89,9 @@ class Btn extends StatelessWidget {
         width: width ?? null,
         height: height ?? null,
         child: Center(
-          child: Text(
-            btnName!,
+          child: Txt(
+            t: btnName!,
+            color: txtColor ?? txtWhiteColor,
             style: style ?? null,
           ),
         ),

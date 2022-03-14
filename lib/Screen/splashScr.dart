@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Pics(
-              src: 'assets/icons/god.png',
+              src: 'assets/images/god-idols.png',
               height: 150,
               width: 150,
             ),

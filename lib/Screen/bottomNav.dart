@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop/utils/style.dart';
 
-import 'CartScreen.dart';
+import 'cartScr.dart';
 import 'CategoryScr.dart';
 import 'HomeScr.dart';
 import 'ProdList.dart';

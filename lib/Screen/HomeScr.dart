@@ -4,7 +4,7 @@ import 'package:shop/Elements/button.dart';
 import 'package:shop/Elements/drawers.dart';
 import 'package:shop/Elements/formfield.dart';
 import 'package:shop/Elements/imgScr.dart';
-import 'package:shop/Screen/CartScreen.dart';
+import 'package:shop/Screen/cartScr.dart';
 import 'package:shop/utils/common.dart';
 import 'package:shop/utils/style.dart';
 
@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                 delegate: SliverChildBuilderDelegate((context, index) {
                   return CategeoryGridProdList(
                     // onTap: () => navigationPush(context, ProductShowScreen()),
-                    imageUrl: 'assets/images/banana.png',
+                    imageUrl: 'assets/images/Wooden-Pooja-Mandir.png',
                     title: 'Categoryname',
                   );
                 }, childCount: 5)),
@@ -121,7 +121,7 @@ class HomeScreen extends StatelessWidget {
                 delegate: SliverChildBuilderDelegate((context, index) {
                   return CategeoryGridProdList(
                     // onTap: () => navigationPush(context, ProductShowScreen()),
-                    imageUrl: 'assets/images/banana.png',
+                    imageUrl: 'assets/images/Oxidized.png',
                     title: 'product',
                   );
                 }, childCount: 6)),
@@ -182,7 +182,7 @@ class CategoryListItem extends StatelessWidget {
                       // ! Pic Section
                       Container(
                         child: Pics(
-                          src: 'assets/images/vegetables.png',
+                          src: 'assets/images/Brass.png',
                           height: 100,
                           width: 150,
                           fit: BoxFit.cover,
