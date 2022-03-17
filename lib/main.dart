@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop/Screen/LoginScr.dart';
 
 import 'Screen/splashScr.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
+      // home: LoginScreen(),
       // home: UserNavigationBar()
       // home: CategoryScreen()
     );

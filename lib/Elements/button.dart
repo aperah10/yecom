@@ -28,7 +28,7 @@ class Txt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      t!,
+      t ?? '',
       textAlign: textAlign ?? null,
       maxLines: maxLines ?? null,
       style: style ??

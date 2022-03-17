@@ -8,14 +8,16 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? elevation;
   final bool? boolLeading;
   final bool? centerTitle;
-  final Widget? leading;
+  final Widget? leading, bottomChild;
   final Function? onTap;
   final String? title;
   final List<Widget>? actionList;
   final Color? bgColor, txtColor;
+  final dynamic leadingOnTap;
 
   BaseAppBar(
       {this.boolLeading,
+      this.bottomChild,
       this.elevation,
       this.leading,
       this.centerTitle,
@@ -23,6 +25,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.title,
       this.bgColor,
       this.txtColor,
+      this.leadingOnTap,
       this.actionList});
 
   @override
@@ -39,7 +42,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
               : IconButton(
                   iconSize: 28,
                   icon: Icon(Icons.chevron_left_sharp, color: txtWhiteColor),
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: leadingOnTap ?? () => Navigator.of(context).pop(),
                 ),
       title: title != null
           ? Text(title!,
@@ -48,6 +51,14 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
           : null,
       centerTitle: centerTitle ?? false,
       actions: actionList,
+      bottom: bottomChild != null
+          ? PreferredSize(
+              preferredSize: Size.fromHeight(80),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 5.0),
+                child: Container(child: bottomChild),
+              ))
+          : null,
     );
   }
 

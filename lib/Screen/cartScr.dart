@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:shop/Elements/baseAppbar.dart';
 import 'package:shop/Elements/button.dart';
+import 'package:shop/Elements/imgScr.dart';
+import 'package:shop/common/addressShow.dart';
 import 'package:shop/utils/common.dart';
 import 'package:shop/utils/style.dart';
+
+import 'CheckOutScr.dart';
 
 class CartScreen extends StatelessWidget {
   CartScreen({Key? key}) : super(key: key);
 
   final List<Widget> tabs = [];
-
-  // dynamic cart;
-
-  // dynamic cartItem;
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +24,51 @@ class CartScreen extends StatelessWidget {
             title: 'Cart Screen',
           ),
 
-          // SliverList(
-          //   delegate: SliverChildBuilderDelegate(
-          //     (BuildContext context, int i) => CartProdContent(
-          //       prodNumber: i,
-          //       // plusCallBack: plusCallBack,
-          //       // minusCallBack: minusCallBack,
-          //       // price: price,
-          //       // fullPrice: fullPrice,
-          //       // quantity: quantity,
-          //     ),
-          //     childCount: 5, // 1000 list items
-          //   ),
-          // ),
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(3.0),
+                  child: AddressPart(
+                    trailing: IconBtn(icon: null),
+                  ),
+                ),
+                Divider(),
+              ],
+            ),
+          ),
+
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int i) => Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 1, color: borderColor)),
+                  child: Row(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Pics(
+                        src: 'assets/images/indianGod.png',
+                        width: 120,
+                        height: 100,
+                      ),
+                      BasicProdDetail(),
+                      IconBtn(icon: Icons.delete, size: 20),
+                    ],
+                  ),
+                ),
+              ),
+              childCount: 5,
+            ),
+          ),
+
+          SliverToBoxAdapter(
+            child: Column(
+              children: [Divider(), PriceList()],
+            ),
+          ),
 
           //  ! Sliver Product Content
         ],
@@ -44,13 +76,12 @@ class CartScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(20),
         child: Btn(
-          // alignment: Alignment.bottomLeft,
           height: 45,
           width: double.infinity,
-          btnName: 'PROCEED TO PAYMENT',
+          btnName: 'CheckOut',
           txtColor: txtWhiteColor,
           color: coffeColor,
-          // onTap: () => navigationPush(context, OrderDeatilsScreen()),
+          onTap: () => navigationPush(context, CheckOutScreen()),
         ),
       ),
     );

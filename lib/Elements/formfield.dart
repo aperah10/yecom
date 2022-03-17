@@ -30,7 +30,7 @@ class EditTextField extends StatelessWidget {
   final double? vertical, horizontal;
   final bool? readOnly;
   final bool? filled;
-  final Color? fillColor;
+  final Color? fillColor, txtColor;
   final TextStyle? style;
   const EditTextField(
       {Key? key,
@@ -44,6 +44,7 @@ class EditTextField extends StatelessWidget {
       this.initialValue,
       this.inputFormatters,
       this.keyboardType,
+      this.txtColor,
       this.maxLength,
       this.minLines,
       this.maxLines,
@@ -78,7 +79,7 @@ class EditTextField extends StatelessWidget {
         Container(
           child: TextFormField(
               onTap: onTap,
-              style: style ?? TextStyle(color: txtWhiteColor),
+              style: style ?? TextStyle(color: txtColor ?? txtWhiteColor),
               textAlign: textAlign ?? TextAlign.center,
               // autovalidateMode: AutovalidateMode.onUserInteraction,
               onChanged: onChanged,
@@ -113,6 +114,7 @@ class EditTextField extends StatelessWidget {
                 isDense: true,
                 focusedErrorBorder: formBox == true
                     ? OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(color: Colors.black, width: 1.0),
                       )
                     : UnderlineInputBorder(
@@ -123,6 +125,7 @@ class EditTextField extends StatelessWidget {
                       ),
                 errorBorder: formBox == true
                     ? OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(color: borderColor, width: 1.0),
                       )
                     : UnderlineInputBorder(
@@ -130,6 +133,7 @@ class EditTextField extends StatelessWidget {
                             BorderSide(color: txtWhiteColor, width: 1.5)),
                 focusedBorder: formBox == true
                     ? OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(color: borderColor, width: 1.0),
                       )
                     : UnderlineInputBorder(
@@ -138,6 +142,7 @@ class EditTextField extends StatelessWidget {
                       ),
                 enabledBorder: formBox == true
                     ? OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(color: borderColor, width: 1.0),
                       )
                     : UnderlineInputBorder(
@@ -146,6 +151,7 @@ class EditTextField extends StatelessWidget {
                       ),
                 border: formBox == true
                     ? OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(color: borderColor, width: 1.0),
                       )
                     : UnderlineInputBorder(
