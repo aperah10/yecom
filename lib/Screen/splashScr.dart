@@ -16,13 +16,15 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () => navigationPush(context, HomeScreen())
-        // navigationPush(
-        //     context,
-        //     UserNavigationBar(
-        //       currentTab: 0,
-        //     ))
-        );
+    Timer(
+        Duration(seconds: 3),
+        () =>
+            // navigationPush(context, HomeScreen())
+            navigationPush(
+                context,
+                UserNavigationBar(
+                  currentTab: 0,
+                )));
   }
 
   @override

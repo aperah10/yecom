@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop/utils/style.dart';
 
+import 'OrderDetScr.dart';
 import 'cartScr.dart';
 import 'CategoryScr.dart';
 import 'HomeScr.dart';
@@ -42,7 +43,7 @@ class _UserNavigationBarState extends State<UserNavigationBar> {
               );
           break;
         case 2:
-          widget.currentPage = SubCategoryScreen(
+          widget.currentPage = OrderDeatilsScreen(
               // sellerId: widget.sellerId,
               );
           break;
@@ -107,12 +108,17 @@ class _UserNavigationBarState extends State<UserNavigationBar> {
             label: 'Category',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/bottom-3.png',
-              height: 22,
+            icon: Icon(
+              Icons.shop,
+              size: 22,
               color: widget.currentTab == 2 ? coffeColor : Colors.black38,
             ),
-            label: 'SubCategroy',
+            // icon: Image.asset(
+            //   'assets/icons/bottom-3.png',
+            //   height: 22,
+            //   color: widget.currentTab == 2 ? coffeColor : Colors.black38,
+            // ),
+            label: 'Order',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(

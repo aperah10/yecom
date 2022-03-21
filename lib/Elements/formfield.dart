@@ -28,8 +28,8 @@ class EditTextField extends StatelessWidget {
   final TextAlign? textAlign;
   final dynamic formBox;
   final double? vertical, horizontal;
-  final bool? readOnly;
-  final bool? filled;
+  final bool? readOnly, obscureText, filled;
+
   final Color? fillColor, txtColor;
   final TextStyle? style;
   const EditTextField(
@@ -60,6 +60,7 @@ class EditTextField extends StatelessWidget {
       this.filled,
       this.fillColor,
       this.validator,
+      this.obscureText,
       this.style})
       : super(key: key);
 
@@ -85,7 +86,7 @@ class EditTextField extends StatelessWidget {
               onChanged: onChanged,
               inputFormatters: inputFormatters,
               initialValue: initialValue,
-              maxLines: maxLines,
+              // maxLines: maxLines,
               minLines: minLines,
               maxLength: maxLength,
 
@@ -94,9 +95,11 @@ class EditTextField extends StatelessWidget {
               controller: controller,
               onSaved: onSaved,
               keyboardType: keyboardType,
+              obscureText: obscureText ?? false,
               validator: (value) => validator!(value),
               // validator: validator,
               // autofocus: false,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               readOnly: readOnly ?? false,
               scrollPadding: EdgeInsets.zero,
               decoration: InputDecoration(

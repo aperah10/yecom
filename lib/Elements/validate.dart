@@ -1,3 +1,14 @@
+validateField(String value) {
+  if (value == null || value.isEmpty)
+    return 'Field is Required.';
+  // else if (value.length > 5)
+  //   return 'Field required at most 5 character';
+  // else if (value.length > 60)
+  //   return 'Field required at most 60 character';
+  else
+    return null;
+}
+
 validateMobile(String value) {
   if (value.isEmpty)
     return 'Mobile Number is Required.';

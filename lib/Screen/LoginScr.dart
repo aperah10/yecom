@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop/Elements/button.dart';
 import 'package:shop/Elements/formfield.dart';
+import 'package:shop/Elements/validate.dart';
 import 'package:shop/utils/common.dart';
 import 'package:shop/utils/style.dart';
 
@@ -20,17 +21,21 @@ class LoginScreen extends StatelessWidget {
     _loginMethod() async {
       var isvalid = _formKey.currentState!.validate();
       // print('valid $isvalid');
+      print("isValid $isvalid");
+      print('userName ${userNameController.text}');
+      print('password ${passwordController.text}');
       if (!isvalid) {
         return 'Please Enter Valid Data';
       }
       _formKey.currentState!.save();
-      if (isvalid == true) {
-        navigationPush(
-            context,
-            UserNavigationBar(
-              currentTab: 0,
-            ));
-      }
+      // if (isvalid == true) {
+      //   print("condtion is true");
+      // navigationPush(
+      //     context,
+      //     UserNavigationBar(
+      //       currentTab: 0,
+      //     ));
+      // }
     }
 
     return Scaffold(
@@ -49,6 +54,7 @@ class LoginScreen extends StatelessWidget {
                 hintText: 'Enter Username',
                 controller: userNameController,
                 vertical: 15,
+                validator: validateField,
               ),
               heightSizedBox(10.0),
               EditTextField(
@@ -59,6 +65,8 @@ class LoginScreen extends StatelessWidget {
                   fillColor: borderColor,
                   hintText: 'Enter Password',
                   controller: passwordController,
+                  validator: validateField,
+                  obscureText: true,
                   formBox: true),
               Padding(
                 padding: const EdgeInsets.all(20),
@@ -66,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                   // alignment: Alignment.bottomLeft,
                   height: 45,
                   width: 100,
-                  onTap: () => _loginMethod(),
+                  onTap: _loginMethod,
                   btnName: 'Login',
                   txtColor: txtWhiteColor,
                   color: coffeColor,

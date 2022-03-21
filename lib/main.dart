@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop/Screen/LoginScr.dart';
+import 'package:shop/Screen/OrderDetScr.dart';
+import 'package:shop/Screen/cartScr.dart';
 
 import 'Screen/splashScr.dart';
 
@@ -14,15 +16,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Sliver Plated',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
-      // home: LoginScreen(),
-      // home: UserNavigationBar()
-      // home: CategoryScreen()
-    );
+        title: 'Sliver Plated',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        debugShowCheckedModeBanner: false,
+        // home: SplashScreen(),
+        // home: OrderDeatilsScreen()
+        // home: LoginScreen(),
+        home: CartScreen()
+        // home: UserNavigationBar()
+        // home: CategoryScreen()
+        );
   }
 }

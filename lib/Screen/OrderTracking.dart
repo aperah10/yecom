@@ -64,9 +64,9 @@ class _TrackingProdContentState extends State<TrackingProdContent> {
           ),
 
           TrackDetContent(
-            value: .25,
+            value: 0.75,
           ),
-
+          Divider(),
           // ! Product Deatils
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +97,7 @@ class _TrackingProdContentState extends State<TrackingProdContent> {
                   ))
             ],
           ),
-          Divider(),
+          // Divider(),
           // !  Button For View More
           Center(
             child: Btn(
@@ -141,53 +141,113 @@ class TrackDetContent extends StatelessWidget {
   final int? trackId;
   final String? t;
   final dynamic onTap;
+  AlignmentGeometry? alignment;
+  final Color? txtColor, indColor;
 
-  const TrackDetContent(
-      {Key? key, this.onTap, this.value, this.t, this.trackId})
+  TrackDetContent(
+      {Key? key,
+      this.onTap,
+      this.txtColor,
+      this.indColor,
+      this.alignment,
+      this.value,
+      this.t,
+      this.trackId})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          'Shipped',
-          style: labelTextStyle,
-        ),
-        Column(
-          children: [
-            Txt(
-              t: t ?? '',
-              color: txtWhiteColor,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 6),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // statsTxt(),
+          Container(
+            alignment: value == 1.0
+                ? Alignment.topRight
+                : value == .25
+                    ? Alignment(-0.7, .5)
+                    : value == .50
+                        ? Alignment.center
+                        : value == .75
+                            ? Alignment(0.7, .5)
+                            : Alignment.topLeft,
+            child: Txt(
+              t: t ?? 'Accept',
+              color: value == 1.0
+                  ? redColor
+                  : value == .25
+                      ? txtBlackColor
+                      : value == .50
+                          ? textBlueColor
+                          : value == .75
+                              ? Colors.brown
+                              : offgreenColor,
             ),
-            Container(
-              width: 90,
-              child: LinearProgressIndicator(
-                color: offgreenColor,
-                backgroundColor: offWhiteColor,
-                // valueColor: new AlwaysStoppedAnimation<Color>(Colors.blue),
-                value: value,
-              ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 5),
+            // width: 90,
+            child: LinearProgressIndicator(
+              minHeight: 5,
+              color: indColor ?? offgreenColor,
+              backgroundColor: Colors.black12,
+              // valueColor: new AlwaysStoppedAnimation<Color>(Colors.blue),
+              value: value,
             ),
-            Row(
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 3.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Txt(
-                  t: 'Delivery \n Tracking Id ${trackId}',
-                  color: txtWhiteColor,
+                  t: ' Delivery \n Tracking Id ${trackId}',
+                  color: txtBlackColor,
                   fontSize: 13,
                 ),
                 InkWell(
-                  onTap: onTap,
-                  child: Txt(
-                    t: 'TrackOrder',
-                    color: blackColor,
+                  onTap: onTap ??
+                      () {
+                        print('btn');
+                      },
+                  child: Container(
+                    padding: EdgeInsets.all(2),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: txtBlackColor),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Txt(
+                      t: ' TrackOrder ',
+                      color: blackColor,
+                    ),
                   ),
                 ),
               ],
-            )
-          ],
-        ),
-      ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget statsTxt() {
+    return Container(
+      alignment: value == 1.0
+          ? Alignment.topRight
+          : value == .25
+              ? Alignment.centerLeft
+              : value == .50
+                  ? Alignment.center
+                  : value == .75
+                      ? Alignment.centerRight
+                      : Alignment.topLeft,
+      child: Txt(
+        t: t ?? 'Accept',
+        color: offgreenColor,
+      ),
     );
   }
 }
