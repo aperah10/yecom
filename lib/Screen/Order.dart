@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop/Elements/baseAppbar.dart';
 import 'package:shop/Elements/button.dart';
 import 'package:shop/Elements/imgScr.dart';
-import 'package:shop/common/addressShow.dart';
+import 'package:shop/common/order_cart_item.dart';
 import 'package:shop/utils/common.dart';
 import 'package:shop/utils/style.dart';
 
@@ -28,24 +28,24 @@ class _OrderScreenState extends State<OrderScreen> {
             title: 'Order Screen',
           ),
 
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                // mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Txt(
-                    t: 'Delivery Address',
-                    style: labelTextStyle,
-                  ),
-                  OrderIdAdrContent(
-                    t2: 'batla House, Sikar,jaipur ',
-                  ),
-                ],
-              ),
-            ),
-          ),
+          // SliverToBoxAdapter(
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(8.0),
+          //     child: Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       // mainAxisAlignment: MainAxisAlignment.start,
+          //       children: [
+          //         Txt(
+          //           t: 'Delivery Address',
+          //           style: labelTextStyle,
+          //         ),
+          //         OrderIdAdrContent(
+          //           t2: 'batla House, Sikar,jaipur ',
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
 
           SliverList(
             delegate: SliverChildBuilderDelegate(
@@ -71,12 +71,6 @@ class _OrderScreenState extends State<OrderScreen> {
               childCount: 5,
             ),
           ),
-
-          // SliverToBoxAdapter(
-          //   child: Column(
-          //     children: [Divider(), PriceList()],
-          //   ),
-          // ),
 
           //  ! Sliver Product Content
         ],

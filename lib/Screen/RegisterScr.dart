@@ -53,7 +53,8 @@ class RegisterScreen extends StatelessWidget {
                 hintText: 'Enter Name',
                 controller: nameController,
                 vertical: 15,
-                validator: validateField,
+                // validator: validateField,
+                validator: (v) => validateField(v!),
               ),
               heightSizedBox(10.0),
               EditTextField(
@@ -65,7 +66,8 @@ class RegisterScreen extends StatelessWidget {
                 hintText: 'Enter Username',
                 controller: userNameController,
                 vertical: 15,
-                validator: validateField,
+                // validator: validateField,
+                validator: (v) => validateField(v!),
               ),
               heightSizedBox(10.0),
               EditTextField(
@@ -77,7 +79,8 @@ class RegisterScreen extends StatelessWidget {
                 hintText: 'Enter Username',
                 controller: mobileController,
                 vertical: 15,
-                validator: validateField,
+                // validator: validateField,
+                validator: (v) => validateField(v!),
               ),
               heightSizedBox(10.0),
               EditTextField(
@@ -88,7 +91,8 @@ class RegisterScreen extends StatelessWidget {
                   fillColor: borderColor,
                   hintText: 'Enter Password',
                   controller: passwordController,
-                  validator: validateField,
+                  // validator: validateField,
+                  validator: (v) => validateField(v!),
                   obscureText: true,
                   formBox: true),
               Padding(

@@ -208,3 +208,39 @@ class _BasicProdDetailState extends State<BasicProdDetail> {
     );
   }
 }
+
+class OrderIdAdrContent extends StatelessWidget {
+  final dynamic onChanged;
+  final dynamic groupVal;
+  final String? t2;
+  final String? t1;
+  final dynamic value;
+  const OrderIdAdrContent(
+      {Key? key, this.value, this.t1, this.groupVal, this.onChanged, this.t2})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: 30,
+            child: Row(
+              children: [
+                Radio(
+                  activeColor: offgreenColor,
+                  value: value,
+                  groupValue: groupVal,
+                  onChanged: onChanged,
+                ),
+                Txt(t: t2),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

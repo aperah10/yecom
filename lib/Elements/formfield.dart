@@ -9,8 +9,8 @@ class EditTextField extends StatelessWidget {
   final String? labelText;
   final TextEditingController? controller;
   final dynamic onTap;
-  // final String? Function(String?)? validator;
-  final Function? validator;
+  final String? Function(String?)? validator;
+  // final Function? validator;
   final BoxDecoration? decoration;
 
   final Function(String)? onChanged;
@@ -96,15 +96,15 @@ class EditTextField extends StatelessWidget {
               onSaved: onSaved,
               keyboardType: keyboardType,
               obscureText: obscureText ?? false,
-              validator: (value) => validator!(value),
-              // validator: validator,
+              // validator: (value) => validator!(value),
+              validator: validator,
               // autofocus: false,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               readOnly: readOnly ?? false,
               scrollPadding: EdgeInsets.zero,
               decoration: InputDecoration(
                 fillColor: fillColor, filled: filled,
-                errorStyle: TextStyle(color: blackColor),
+                errorStyle: TextStyle(color: redColor),
                 errorText: errorText,
                 counter: Offstage(),
                 labelStyle: TextStyle(
@@ -117,7 +117,7 @@ class EditTextField extends StatelessWidget {
                 isDense: true,
                 focusedErrorBorder: formBox == true
                     ? OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(color: Colors.black, width: 1.0),
                       )
                     : UnderlineInputBorder(
@@ -128,7 +128,7 @@ class EditTextField extends StatelessWidget {
                       ),
                 errorBorder: formBox == true
                     ? OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(color: borderColor, width: 1.0),
                       )
                     : UnderlineInputBorder(
@@ -136,7 +136,7 @@ class EditTextField extends StatelessWidget {
                             BorderSide(color: txtWhiteColor, width: 1.5)),
                 focusedBorder: formBox == true
                     ? OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(color: borderColor, width: 1.0),
                       )
                     : UnderlineInputBorder(
@@ -145,7 +145,7 @@ class EditTextField extends StatelessWidget {
                       ),
                 enabledBorder: formBox == true
                     ? OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(color: borderColor, width: 1.0),
                       )
                     : UnderlineInputBorder(
@@ -154,7 +154,7 @@ class EditTextField extends StatelessWidget {
                       ),
                 border: formBox == true
                     ? OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(color: borderColor, width: 1.0),
                       )
                     : UnderlineInputBorder(

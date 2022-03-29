@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop/Elements/baseAppbar.dart';
 import 'package:shop/Elements/button.dart';
 import 'package:shop/Elements/imgScr.dart';
-import 'package:shop/common/addressShow.dart';
+import 'package:shop/common/order_cart_item.dart';
 import 'package:shop/utils/common.dart';
 import 'package:shop/utils/style.dart';
 
@@ -24,19 +24,19 @@ class CartScreen extends StatelessWidget {
             title: 'Cart Screen',
           ),
 
-          SliverToBoxAdapter(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: AddressPart(
-                    trailing: IconBtn(icon: null),
-                  ),
-                ),
-                Divider(),
-              ],
-            ),
-          ),
+          // SliverToBoxAdapter(
+          //   child: Column(
+          //     children: [
+          //       Padding(
+          //         padding: const EdgeInsets.all(3.0),
+          //         child: AddressPart(
+          //           trailing: IconBtn(icon: null),
+          //         ),
+          //       ),
+          //       Divider(),
+          //     ],
+          //   ),
+          // ),
 
           SliverList(
             delegate: SliverChildBuilderDelegate(
