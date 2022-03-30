@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop/Backend/Bloc/reg_Login_Bloc.dart';
 import 'package:shop/Elements/button.dart';
 import 'package:shop/Elements/formfield.dart';
 import 'package:shop/Elements/validate.dart';
@@ -28,64 +30,98 @@ class LoginScreen extends StatelessWidget {
         return 'Please Enter Valid Data';
       }
       _formKey.currentState!.save();
-      // if (isvalid == true) {
-      //   print("condtion is true");
-      // navigationPush(
-      //     context,
-      //     UserNavigationBar(
-      //       currentTab: 0,
-      //     ));
-      // }
+
+      if (isvalid == true) {
+        // print("condtion is true");
+        // navigationPush(
+        //     context,
+        //     UserNavigationBar(
+        //       currentTab: 0,
+        //     ));
+        final cubit = BlocProvider.of<RegisterBloc>(context, listen: false);
+        var b = cubit.add(LoginBtnEvent(
+          password: passwordController.text,
+          email: userNameController.text,
+        ));
+
+        print(cubit);
+
+        // BlocProvider.of<RegisterBloc>(context)
+        //   ..add(LoginBtnEvent(
+        //     password: passwordController.text,
+        //     email: userNameController.text,
+        //   ));
+        // var isris = context.read<RegisterBloc>().add(LoginBtnEvent(
+        //       password: passwordController.text,
+        //       email: userNameController.text,
+        //     ));
+        // var isregis = await BlocProvider.of<RegisterBloc>(context)
+        //   ..add(LoginBtnEvent(
+        //     password: passwordController.text,
+        //     email: userNameController.text,
+        //   ));
+      }
     }
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              EditTextField(
-                textAlign: TextAlign.left,
-                txtColor: txtBlackColor,
-                formBox: true,
-                fillColor: borderColor,
-                headTxt: 'Username',
-                hintText: 'Enter Username',
-                controller: userNameController,
-                vertical: 15,
-                validator: (v) => validateField(v!),
-              ),
-              heightSizedBox(10.0),
-              EditTextField(
-                  vertical: 15,
+      body:
+          BlocConsumer<RegisterBloc, RegisterState>(listener: (context, state) {
+        if (state is SuccessState) {
+          navigationPush(
+              context,
+              UserNavigationBar(
+                currentTab: 1,
+              ));
+        }
+      }, builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                EditTextField(
                   textAlign: TextAlign.left,
                   txtColor: txtBlackColor,
-                  headTxt: 'Password',
+                  formBox: true,
                   fillColor: borderColor,
-                  hintText: 'Enter Password',
-                  controller: passwordController,
-                  // validator: validateField,
+                  headTxt: 'Username',
+                  hintText: 'Enter Username',
+                  controller: userNameController,
+                  vertical: 15,
                   validator: (v) => validateField(v!),
-                  obscureText: true,
-                  formBox: true),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Btn(
-                  // alignment: Alignment.bottomLeft,
-                  height: 45,
-                  width: 100,
-                  onTap: _loginMethod,
-                  btnName: 'Login',
-                  txtColor: txtWhiteColor,
-                  color: coffeColor,
-                  // onTap: () => navigationPush(context, OrderDeatilsScreen()),
                 ),
-              )
-            ],
+                heightSizedBox(10.0),
+                EditTextField(
+                    vertical: 15,
+                    textAlign: TextAlign.left,
+                    txtColor: txtBlackColor,
+                    headTxt: 'Password',
+                    fillColor: borderColor,
+                    hintText: 'Enter Password',
+                    controller: passwordController,
+                    // validator: validateField,
+                    validator: (v) => validateField(v!),
+                    obscureText: true,
+                    formBox: true),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Btn(
+                    // alignment: Alignment.bottomLeft,
+                    height: 45,
+                    width: 100,
+                    onTap: _loginMethod,
+                    btnName: 'Login',
+                    txtColor: txtWhiteColor,
+                    color: coffeColor,
+                    // onTap: () => navigationPush(context, OrderDeatilsScreen()),
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
       bottomNavigationBar:
           // bottomSheet:
           Container(

@@ -7,10 +7,8 @@ class UserauthenticateBloc
     extends Bloc<UserauthenticateEvent, UserauthenticateState> {
   UserauthenticateBloc() : super(UserauthenticateInitial());
 
-  @override
-  UserauthenticateState get initialState => AuthenticationUninitialized();
+  // UserauthenticateState get initialState => AuthenticationUninitialized();
 
-  @override
   Stream<UserauthenticateState> mapEventToState(
     UserauthenticateEvent event,
   ) async* {

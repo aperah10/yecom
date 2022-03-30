@@ -1,13 +1,10 @@
 class URLConstants {
-  static const baseUrl =
-      "http://bitesvilla-test.us-east-2.elasticbeanstalk.com/";
+  static const baseUrl = "https://reqres.in/";
 
   ///API onBoarding************************************************************************
-  static const loginApiUrl = baseUrl + 'api/users/login/';
+  static const signUpApiUrl = baseUrl + 'api/register/';
+  static const loginApiUrl = baseUrl + 'api/login/';
   static const logoutApiUrl = baseUrl + 'api/users/logout/';
-  static const signUpApiUrl = baseUrl + 'api/users/createUser/';
-  static const isEmailExists = baseUrl + 'api/users/isEmailExists/';
-  static const updateGoogleUser = baseUrl + 'api/users/updateGoogleUser/';
 
   //API ForgotPassword Email
   static const sendOtpEmail = baseUrl + 'api/users/sendOtpToEmail/';

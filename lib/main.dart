@@ -1,9 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:shop/Screen/cartScr.dart';
-
-import 'Screen/addressScr.dart';
+import 'package:provider/provider.dart';
+import 'Allproveder.dart';
 import 'Screen/splashScr.dart';
 
 class MyHttpOverrides extends HttpOverrides {
@@ -28,14 +26,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Sliver Plated',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return
+        // MaterialApp(
+        //   title: 'Sliver Plated',
+        //   theme: ThemeData(
+        //     primarySwatch: Colors.blue,
+        //   ),
+        //   debugShowCheckedModeBanner: false,
+        //   // home: AddressScreen(),
+        //   home: SplashScreen(),
+        // );
+
+        MultiProvider(
+      providers: MainBloc.allBlocs(),
+      child: MaterialApp(
+        theme: ThemeData(
+            // primaryColor: redColor,
+            // appBarTheme: const AppBarTheme(color: redColor)
+            ),
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
       ),
-      debugShowCheckedModeBanner: false,
-      // home: AddressScreen(),
-      home: SplashScreen(),
     );
   }
 }

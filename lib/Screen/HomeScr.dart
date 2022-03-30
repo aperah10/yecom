@@ -9,6 +9,7 @@ import 'package:shop/utils/common.dart';
 import 'package:shop/utils/style.dart';
 
 import 'CategoryScr.dart';
+import 'LoginScr.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -43,6 +44,11 @@ class HomeScreen extends StatelessWidget {
                   ),
                 )),
             actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.login),
+                tooltip: 'Login',
+                onPressed: () => navigationPush(context, LoginScreen()),
+              ),
               IconButton(
                 icon: const Icon(Icons.shopping_bag),
                 tooltip: 'Cart',

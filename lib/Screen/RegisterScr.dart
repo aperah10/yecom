@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop/Backend/Bloc/reg_Login_Bloc.dart';
 import 'package:shop/Elements/button.dart';
 import 'package:shop/Elements/formfield.dart';
 import 'package:shop/Elements/validate.dart';
@@ -29,89 +31,107 @@ class RegisterScreen extends StatelessWidget {
       }
       _formKey.currentState!.save();
       if (isvalid == true) {
-        navigationPush(
-            context,
-            UserNavigationBar(
-              currentTab: 0,
-            ));
+        var isregis =
+            await BlocProvider.of<RegisterBloc>(context, listen: false)
+              ..add(SignUpBtnEvent(
+                  password: passwordController.text,
+                  email: userNameController.text,
+                  fullname: nameController.text,
+                  phone: mobileController.text));
+        // navigationPush(
+        //     context,
+        //     UserNavigationBar(
+        //       currentTab: 0,
+        //     ));
       }
     }
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              EditTextField(
-                textAlign: TextAlign.left,
-                txtColor: txtBlackColor,
-                formBox: true,
-                fillColor: borderColor,
-                headTxt: 'Name',
-                hintText: 'Enter Name',
-                controller: nameController,
-                vertical: 15,
-                // validator: validateField,
-                validator: (v) => validateField(v!),
-              ),
-              heightSizedBox(10.0),
-              EditTextField(
-                textAlign: TextAlign.left,
-                txtColor: txtBlackColor,
-                formBox: true,
-                fillColor: borderColor,
-                headTxt: 'Username',
-                hintText: 'Enter Username',
-                controller: userNameController,
-                vertical: 15,
-                // validator: validateField,
-                validator: (v) => validateField(v!),
-              ),
-              heightSizedBox(10.0),
-              EditTextField(
-                textAlign: TextAlign.left,
-                txtColor: txtBlackColor,
-                formBox: true,
-                fillColor: borderColor,
-                headTxt: 'Mobile',
-                hintText: 'Enter Username',
-                controller: mobileController,
-                vertical: 15,
-                // validator: validateField,
-                validator: (v) => validateField(v!),
-              ),
-              heightSizedBox(10.0),
-              EditTextField(
-                  vertical: 15,
+      body:
+          BlocConsumer<RegisterBloc, RegisterState>(listener: (context, state) {
+        if (state is SuccessState) {
+          navigationPush(
+              context,
+              UserNavigationBar(
+                currentTab: 1,
+              ));
+        }
+      }, builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                EditTextField(
                   textAlign: TextAlign.left,
                   txtColor: txtBlackColor,
-                  headTxt: 'Password',
+                  formBox: true,
                   fillColor: borderColor,
-                  hintText: 'Enter Password',
-                  controller: passwordController,
+                  headTxt: 'Name',
+                  hintText: 'Enter Name',
+                  controller: nameController,
+                  vertical: 15,
                   // validator: validateField,
                   validator: (v) => validateField(v!),
-                  obscureText: true,
-                  formBox: true),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Btn(
-                  // alignment: Alignment.bottomLeft,
-                  height: 45,
-                  width: 100,
-                  onTap: _regMethod,
-                  btnName: 'Register',
-                  txtColor: txtWhiteColor,
-                  color: coffeColor,
-                  // onTap: () => navigationPush(context, OrderDeatilsScreen()),
                 ),
-              )
-            ],
+                heightSizedBox(10.0),
+                EditTextField(
+                  textAlign: TextAlign.left,
+                  txtColor: txtBlackColor,
+                  formBox: true,
+                  fillColor: borderColor,
+                  headTxt: 'Username',
+                  hintText: 'Enter Username',
+                  controller: userNameController,
+                  vertical: 15,
+                  // validator: validateField,
+                  validator: (v) => validateField(v!),
+                ),
+                heightSizedBox(10.0),
+                EditTextField(
+                  textAlign: TextAlign.left,
+                  txtColor: txtBlackColor,
+                  formBox: true,
+                  fillColor: borderColor,
+                  headTxt: 'Mobile',
+                  hintText: 'Enter Username',
+                  controller: mobileController,
+                  vertical: 15,
+                  // validator: validateField,
+                  validator: (v) => validateField(v!),
+                ),
+                heightSizedBox(10.0),
+                EditTextField(
+                    vertical: 15,
+                    textAlign: TextAlign.left,
+                    txtColor: txtBlackColor,
+                    headTxt: 'Password',
+                    fillColor: borderColor,
+                    hintText: 'Enter Password',
+                    controller: passwordController,
+                    // validator: validateField,
+                    validator: (v) => validateField(v!),
+                    obscureText: true,
+                    formBox: true),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Btn(
+                    // alignment: Alignment.bottomLeft,
+                    height: 45,
+                    width: 100,
+                    onTap: _regMethod,
+                    btnName: 'Register',
+                    txtColor: txtWhiteColor,
+                    color: coffeColor,
+                    // onTap: () => navigationPush(context, OrderDeatilsScreen()),
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
       bottomNavigationBar:
           // bottomSheet:
           Container(
