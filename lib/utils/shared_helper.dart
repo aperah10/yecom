@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedHelper {
@@ -38,4 +40,62 @@ class SharedHelper {
     // prefs = await SharedPreferences.getInstance();
     return (prefs.getStringList(key) ?? <String>[]);
   }
+}
+
+// class HiveHelpers {
+//   final _shoppingBox = Hive.box('shopping_box');
+//   // Create new item
+//   Future<void> createItem(Map<String, dynamic> newItem) async {
+//     await _shoppingBox.add(newItem);
+//     // _refreshItems(); // update the UI
+//   }
+
+//   // Retrieve a single item from the database by using its key
+//   // Our app won't use this function but I put it here for your reference
+//   Map<String, dynamic> readItem(int key) {
+//     final item = _shoppingBox.get(key);
+//     return item;
+//   }
+
+//   // Update a single item
+//   Future<void> updateItem(int itemKey, Map<String, dynamic> item) async {
+//     await _shoppingBox.put(itemKey, item);
+//     // _refreshItems(); // Update the UI
+//   }
+
+//   // Delete a single item
+//   Future<void> deleteItem(int itemKey) async {
+//     await _shoppingBox.delete(itemKey);
+//     // _refreshItems(); // update the UI
+
+//     // Display a snackbar
+//   }
+// }
+
+final shoppingBox = Hive.box('shopping_box');
+// Get all items from the database
+
+// Create new item
+Future<void> createItem(Map<String, dynamic> newItem) async {
+  await shoppingBox.add(newItem);
+  // _refreshItems(); // update the UI
+}
+
+// Retrieve a single item from the database by using its key
+// Our app won't use this function but I put it here for your reference
+Map<String, dynamic> readItem(int key) {
+  final item = shoppingBox.get(key);
+  return item;
+}
+
+// Update a single item
+Future<void> updateItem(int itemKey, Map<String, dynamic> item) async {
+  await shoppingBox.put(itemKey, item);
+  // _refreshItems(); // Update the UI
+}
+
+// Delete a single item
+Future<void> deleteItem(int itemKey) async {
+  await shoppingBox.delete(itemKey);
+  // _refreshItems(); // update the UI
 }

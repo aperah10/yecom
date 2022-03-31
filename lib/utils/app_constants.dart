@@ -18,25 +18,15 @@ class URLConstants {
   static const verifyOtpMbl = baseUrl + 'comm/verifyOtp';
   static const resetPassFromMbl = baseUrl + 'api/users/resetPasswordFromPhone';
 
-  ///API Home************************************************************************
-  static const currentScreen = baseUrl + 'api/users/screen/current';
-  static const userHome = baseUrl + 'api/users/userHome';
-  static const getSellersDish = baseUrl + 'api/dish/sellerId';
+  //  ! Home Product
+  static const prodUrl = baseUrl + '';
+  static const homeUrl = baseUrl + 'api/unknown/';
 
-  // ! SELLER REGISTER
-  static const selSwitchScreen = baseUrl + 'api/users/screen/switch';
-  static const sellerIdVerify = baseUrl + 'api/seller/sellerId';
-  static const selKitchenCheckImage = baseUrl + 'api/dish/checkKitchenImage';
-  static const selKitchenAddImage = baseUrl + 'api/seller/addKitchenDetails';
-  static const selCheckAvailability = baseUrl + 'api/seller/availability';
-  // static const sellerVerifyEntry = baseUrl + 'api/users/50';
-  // ! Seller Api Register, DishAdded , Add More Dish
-  static const sellerReg = baseUrl + 'api/seller/createSellerWithUpload';
-  static const selDishAdd = baseUrl + 'api/dish/CreateDish';
-  static const selRegFieldData = baseUrl + 'api/seller/registrationType';
-  static const selDishAddMoreItem = baseUrl + 'api/dish/CreateDish';
-  static const selDishFliterField = baseUrl + 'api/dish/filter/filterTypes';
-  static const selMobileOtp = baseUrl + 'comm/sellerPhone/sendOtp';
-  static const selverifyOtp = baseUrl + 'comm/sellerPhone/verifyOtp';
-  static const selresendOtp = baseUrl + 'comm/sellerPhone/resendOtp';
+  // ! Order and Cart
+  static const cartUrl = baseUrl + '';
+  static const cartItemPutUrl = baseUrl + '';
+  static const cartItemDeleteUrl = baseUrl + '';
+  static const wishlistUrl = baseUrl + '';
+  static const wishlistItemPutUrl = baseUrl + '';
+  static const wishlistItemDeleteUrl = baseUrl + '';
 }

@@ -267,6 +267,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   vertical: 15,
                   controller: orderDesController,
                   minLines: 3,
+                  maxLines: 4,
                   headTxt: 'Description',
                   hintText: 'Order Descrtiption (optional)',
                 )

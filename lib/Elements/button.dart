@@ -201,3 +201,61 @@ class _CartBtnState extends State<CartBtn> {
     );
   }
 }
+
+class CartBtn2 extends StatelessWidget {
+  final dynamic cartItem;
+  final Color? color;
+  final dynamic onPressed1;
+  final dynamic onPressed2;
+  CartBtn2({this.cartItem, this.color, this.onPressed1, this.onPressed2});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 25,
+      // width: getWidth(context) / 4,
+      alignment: Alignment.center,
+      width: 70,
+      decoration: BoxDecoration(
+          border: Border.all(width: .9, color: Colors.black12),
+          borderRadius: BorderRadius.circular(3)),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Container(
+              // alignment: Alignment.topLeft,
+              child: IconButton(
+                  padding: const EdgeInsets.all(0.0),
+                  icon: Icon(Icons.remove),
+                  iconSize: 18,
+                  color: color,
+                  onPressed: onPressed1),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              alignment: Alignment.center,
+              child: Text(
+                ' $cartItem ',
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              // alignment: Alignment.topRight,
+              child: IconButton(
+                padding: const EdgeInsets.all(0.0),
+                icon: Icon(Icons.add),
+                iconSize: 18,
+                color: color,
+                onPressed: onPressed2,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}

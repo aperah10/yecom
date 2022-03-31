@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop/Elements/button.dart';
 import 'package:shop/utils/common.dart';
+import 'package:shop/utils/shared_helper.dart';
 import 'package:shop/utils/style.dart';
 
 class AddressPart extends StatelessWidget {
@@ -128,8 +129,19 @@ class PriceList extends StatelessWidget {
 }
 
 class BasicProdDetail extends StatefulWidget {
+  final dynamic prodNumber;
   final bool? cartBtn, mrpTxt;
-  const BasicProdDetail({Key? key, this.cartBtn, this.mrpTxt})
+  final dynamic price;
+  final dynamic quantity;
+  final dynamic fullPrice;
+  const BasicProdDetail(
+      {Key? key,
+      this.quantity,
+      this.price,
+      this.fullPrice,
+      this.prodNumber,
+      this.cartBtn,
+      this.mrpTxt})
       : super(key: key);
 
   @override
@@ -140,6 +152,7 @@ class _BasicProdDetailState extends State<BasicProdDetail> {
   dynamic price;
   dynamic quantity;
   dynamic fullPrice;
+  dynamic cartItem = 1;
 
   plusCallBack(dynamic cartItem) {
     setState(() {
@@ -166,12 +179,12 @@ class _BasicProdDetailState extends State<BasicProdDetail> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Txt(
-          t: 'Title Name',
+          t: 'Title Name ${widget.prodNumber}',
           fontSize: 15,
           fontWeight: FontWeight.bold,
         ),
         Txt(
-          t: '${quantity != null ? quantity : 1}',
+          t: '${widget.quantity != null ? widget.quantity : 1}',
           fontSize: 17,
           color: greyColor,
         ),
@@ -181,7 +194,7 @@ class _BasicProdDetailState extends State<BasicProdDetail> {
               child: widget.mrpTxt == false
                   ? null
                   : Txt(
-                      t: 'MRP : Rs${fullPrice != null ? fullPrice : 900} ',
+                      t: 'MRP : Rs${widget.fullPrice != null ? widget.fullPrice : 900} ',
                       decoration: TextDecoration.lineThrough,
                       fontSize: 13,
                       color: greyColor,
@@ -190,18 +203,56 @@ class _BasicProdDetailState extends State<BasicProdDetail> {
 
             // widthSizedBox(2.0),
             Txt(
-              t: 'Rs ${price != null ? price : 500}',
+              t: 'Rs ${widget.price != null ? widget.price : 500}',
               style: labelTextStyle,
             ),
           ],
         ),
         heightSizedBox(2.0),
+        // Container(
+        //   child: widget.cartBtn == false
+        //       ? null
+        //       : CartBtn(
+        //           plusCallBack: plusCallBack,
+        //           minusCallBack: minusCallBack,
+        //         ),
         Container(
           child: widget.cartBtn == false
               ? null
-              : CartBtn(
-                  plusCallBack: plusCallBack,
-                  minusCallBack: minusCallBack,
+              : CartBtn2(
+                  onPressed1: cartItem > 1
+                      ? () async {
+                          setState(() {
+                            cartItem -= 1;
+
+                            createItem({
+                              "fullPrice": fullPrice,
+                              "quantity": quantity,
+                              "price": price
+                            });
+
+                            // update an existing item
+                            // if (itemKey != null) {
+                            //   updateItem(itemKey, {
+                            //     'name': _nameController.text.trim(),
+                            //     'quantity': _quantityController.text.trim()
+                            //   });
+                            // }
+
+                            // Clear the text fields
+                            // _nameController.text = '';
+                            // _quantityController.text = '';
+
+                            // Navigator.of(context).pop();
+                          });
+                        }
+                      : null,
+                  cartItem: cartItem,
+                  onPressed2: () {
+                    setState(() {
+                      cartItem += 1;
+                    });
+                  },
                 ),
         )
       ],

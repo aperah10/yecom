@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'Allproveder.dart';
 import 'Screen/splashScr.dart';
@@ -17,6 +18,7 @@ void main() {
   // HttpOverrides.global = new MyHttpOverrides();
   //  ! 2nd method
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 

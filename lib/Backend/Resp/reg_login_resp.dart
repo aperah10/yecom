@@ -14,7 +14,7 @@ class RegLoginResp {
       data: {"email": email, "password": password},
     );
     print(response);
-    if (response) {
+    if (response != null) {
       setCurrentUser(response);
       currentUser.value = User.fromJSON(response);
 

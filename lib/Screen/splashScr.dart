@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:shop/Elements/imgScr.dart';
 import 'package:shop/Screen/HomeScr.dart';
 import 'package:shop/Screen/bottomNav.dart';
 import 'package:shop/utils/common.dart';
 import 'package:shop/utils/shared_helper.dart';
 import 'package:shop/utils/style.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -65,7 +67,10 @@ class _SplashScreenState extends State<SplashScreen> {
       //           // navigationRemoveUntil(context, OnBoarding()),
       //         }
       //     });
-    } else
+    } else {
+      await Hive.initFlutter();
+
+      await Hive.openBox('shopping_box');
       Timer(
           Duration(seconds: 2),
           () => navigationRemoveUntil(
@@ -73,6 +78,7 @@ class _SplashScreenState extends State<SplashScreen> {
               UserNavigationBar(
                 currentTab: 0,
               )));
+    }
   }
 
   @override
